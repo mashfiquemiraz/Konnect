@@ -1,71 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Konnect - Your Home Away From Home</title>
-    <!-- Design CSS files explicitly loaded -->
-    <link rel="stylesheet" href="./design/colors.css">
-    <link rel="stylesheet" href="./design/typography.css">
-    <link rel="stylesheet" href="./design/components.css">
-    <!-- Main stylesheet -->
-    <link rel="stylesheet" href="./styles.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Konnect</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="icon" href="./favicon.ico" />
 </head>
 <body>
-    <div id="main-app"></div>
+  <div id="main-app"></div>
 
-    <!-- Core Scripts -->
-    <script src="./main.js"></script>
-    <script src="./opening-animation.js"></script>
-    <script src="./onboarding.js"></script>
-    <script src="./navigation.js"></script>
-    
-    <!-- Screen Scripts -->
-    <script src="./home-screen.js"></script>
-    <script src="./services-screen.js"></script>
-    <script src="./discover-screen.js"></script>
-    <script src="./community-screen.js"></script>
-    <script src="./profile-screen.js"></script>
-    
-    <!-- API and Feature Scripts -->
-    <script src="./simulated-apis.js"></script>
-    <script src="./extra-features.js"></script>
-    <script src="./validation.js"></script>
-    
-    <!-- Initialize App -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize app
-            if (window.KonnectApp && typeof window.KonnectApp.init === 'function') {
-                window.KonnectApp.init();
-            } else {
-                // Fallback initialization
-                initApp();
-            }
-        });
-        
-        // Fallback initialization function
-        function initApp() {
-            console.log("Initializing Konnect App");
-            
-            // Create main app container if it doesn't exist
-            if (!document.getElementById('main-app')) {
-                const mainApp = document.createElement('div');
-                mainApp.id = 'main-app';
-                document.body.appendChild(mainApp);
-            }
-            
-            // Initialize navigation
-            if (typeof initNavigation === 'function') {
-                initNavigation();
-            }
-            
-            // Start with opening animation
-            if (typeof showOpeningAnimation === 'function') {
-                showOpeningAnimation();
-            }
-        }
-    </script>
+  <!-- Scripts -->
+  <script src="./main.js"></script>
+  <script src="./opening-animation.js"></script>
+  <script src="./onboarding.js"></script>
+  <script src="./navigation.js"></script>
+  <script src="./home-screen.js"></script>
+  <script src="./services-screen.js"></script>
+  <script src="./explore-screen.js"></script>
+  <script src="./notification-screen.js"></script>
+  <script src="./profile-screen.js"></script>
+
+  <!-- Fallback initializer -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log("Initializing Konnect App...");
+
+      // Ensure #main-app exists
+      let mainApp = document.getElementById('main-app');
+      if (!mainApp) {
+        mainApp = document.createElement('div');
+        mainApp.id = 'main-app';
+        document.body.appendChild(mainApp);
+      }
+
+      // Init base app
+      if (typeof initNavigation === 'function') initNavigation();
+      if (typeof showOpeningAnimation === 'function') showOpeningAnimation();
+    });
+  </script>
 </body>
 </html>
