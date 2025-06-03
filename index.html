@@ -6,37 +6,55 @@
   <title>Konnect</title>
   <link rel="stylesheet" href="./styles.css" />
   <link rel="icon" href="./favicon.ico" />
+  <style>
+    body { margin: 0; font-family: sans-serif; background-color: #f8f8f8; }
+    #main-app { padding-bottom: 60px; }
+    #bottom-nav {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #fff;
+      display: flex;
+      justify-content: space-around;
+      border-top: 1px solid #ccc;
+      padding: 10px 0;
+    }
+    #bottom-nav button {
+      background: none;
+      border: none;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
-  <div id="main-app"></div>
+  <div id="main-app">Loading...</div>
 
-  <!-- Scripts -->
   <script src="./main.js"></script>
   <script src="./opening-animation.js"></script>
   <script src="./onboarding.js"></script>
   <script src="./navigation.js"></script>
   <script src="./home-screen.js"></script>
   <script src="./services-screen.js"></script>
-  <script src="./explore-screen.js"></script>
-  <script src="./notification-screen.js"></script>
+  <script src="./discover-screen.js"></script>
+  <script src="./community-screen.js"></script>
   <script src="./profile-screen.js"></script>
+  <script src="./extra-features.js"></script>
+  <script src="./simulated-apis.js"></script>
+  <script src="./validation.js"></script>
 
-  <!-- Fallback initializer -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      console.log("Initializing Konnect App...");
-
-      // Ensure #main-app exists
-      let mainApp = document.getElementById('main-app');
+    document.addEventListener("DOMContentLoaded", () => {
+      const mainApp = document.getElementById("main-app");
       if (!mainApp) {
-        mainApp = document.createElement('div');
-        mainApp.id = 'main-app';
-        document.body.appendChild(mainApp);
+        console.error("Missing #main-app container.");
+        return;
       }
 
-      // Init base app
-      if (typeof initNavigation === 'function') initNavigation();
-      if (typeof showOpeningAnimation === 'function') showOpeningAnimation();
+      if (typeof showOpeningAnimation === "function") {
+        showOpeningAnimation();
+      } else {
+        mainApp.innerHTML = "<p>Error: App failed to load. Try refreshing.</p>";
+        console.error("showOpeningAnimation function not found.");
+      }
     });
   </script>
 </body>
