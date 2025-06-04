@@ -1,61 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Konnect</title>
-  <link rel="stylesheet" href="./styles.css" />
-  <link rel="icon" href="./favicon.ico" />
-  <style>
-    body { margin: 0; font-family: sans-serif; background-color: #f8f8f8; }
-    #main-app { padding-bottom: 60px; }
-    #bottom-nav {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: #fff;
-      display: flex;
-      justify-content: space-around;
-      border-top: 1px solid #ccc;
-      padding: 10px 0;
-    }
-    #bottom-nav button {
-      background: none;
-      border: none;
-      font-size: 16px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konnect - Minimal Test</title>
+    <style>
+        /* Basic styling to verify rendering */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F5F5F5;
+            color: #212529;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background-color: #FF6B00;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .button {
+            background-color: #FF6B00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .button:hover {
+            background-color: #e05e00;
+        }
+    </style>
 </head>
 <body>
-  <div id="main-app">Loading...</div>
+    <div class="container">
+        <div class="header">
+            <h1>Konnect</h1>
+            <p>Your Home Away From Home</p>
+        </div>
+        
+        <div class="card">
+            <h2>Minimal Test Page</h2>
+            <p>This is a minimal test page to verify that basic HTML and CSS rendering works correctly on GitHub Pages.</p>
+            <p>If you can see this content with proper styling (orange header, white card with shadow), then basic rendering is working.</p>
+            <button class="button" id="testButton">Test JavaScript</button>
+            <p id="jsResult"></p>
+        </div>
+    </div>
 
-  <script src="./main.js"></script>
-  <script src="./opening-animation.js"></script>
-  <script src="./onboarding.js"></script>
-  <script src="./navigation.js"></script>
-  <script src="./home-screen.js"></script>
-  <script src="./services-screen.js"></script>
-  <script src="./discover-screen.js"></script>
-  <script src="./community-screen.js"></script>
-  <script src="./profile-screen.js"></script>
-  <script src="./extra-features.js"></script>
-  <script src="./simulated-apis.js"></script>
-  <script src="./validation.js"></script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const mainApp = document.getElementById("main-app");
-      if (!mainApp) {
-        console.error("Missing #main-app container.");
-        return;
-      }
-
-      if (typeof showOpeningAnimation === "function") {
-        showOpeningAnimation();
-      } else {
-        mainApp.innerHTML = "<p>Error: App failed to load. Try refreshing.</p>";
-        console.error("showOpeningAnimation function not found.");
-      }
-    });
-  </script>
+    <script>
+        // Simple JavaScript to verify that JS execution works
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM fully loaded');
+            document.getElementById('testButton').addEventListener('click', function() {
+                document.getElementById('jsResult').textContent = 'JavaScript is working correctly! ' + new Date().toLocaleTimeString();
+            });
+            
+            // Auto-test JavaScript after 1 second
+            setTimeout(function() {
+                document.getElementById('jsResult').textContent = 'JavaScript initialized successfully! ' + new Date().toLocaleTimeString();
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
